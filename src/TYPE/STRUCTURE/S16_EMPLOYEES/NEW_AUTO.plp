@@ -1,0 +1,85 @@
+class S16_EMPLOYEES;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Табельный номер')
+	P_PERSONNELNUMBER in [SHORT4],
+	@name('Полное имя')
+	P_NAME in [STRING_50],
+	@name('Должность')
+	P_POST in [S16_POST_REF],
+	@name('Образование')
+	P_EDUCATION in [STRING_50],
+	@name('Дата приема на работу')
+	P_EMPLOYMENTDATE in [DATE],
+	@name('Телефон')
+	P_PHONE in [NUMBER],
+	@name('ИНН')
+	P_INN in [NUMBER],
+	@name('Уволен')
+	P_FIRED  in [BOOLEAN],
+	@name('Дата увольнения')
+	P_DISMISSALDATE in [DATE]
+	
+) return ref [S16_EMPLOYEES] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_PERSONNELNUMBER := this.[PERSONNELNUMBER];
+		P_NAME := this.[NAME];
+		P_POST := this.[POST_ID];
+		P_EDUCATION := this.[EDUCATION];
+		P_EMPLOYMENTDATE := this.[EMPLOYMENTDATE];
+		P_PHONE := this.[PHONE];
+		P_INN := this.[INN];
+		P_FIRED  :=this.[FIRED];
+		P_DISMISSALDATE :=this.[DISMISSALDATE];
+	end if;
+	-- End initialization of parameters and variables
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_PERSONNELNUMBER is null then
+				pragma error ('Необходимо ввести табельный номер сотрудника');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Необходимо ввести имя сотрудника');
+			end if;
+			
+			if P_POST is null then
+				pragma error ('Необходимо ввести должность сотрудника');
+			end if;
+		end if;
+	end if;
+end;
+
+execute is
+begin
+	-- Установка значения реквизита "Табельный номер"
+	[PERSONNELNUMBER] := P_PERSONNELNUMBER;
+	-- Установка значения реквизита "Полное имя"
+	[NAME] := P_NAME;
+	-- Установка значения реквизита "Должность"
+	[POST_ID] := P_POST;
+	-- Установка значения реквизита "Образование"
+	[EDUCATION] := P_EDUCATION;
+	-- Установка значения реквизита "Дата приема на работу"
+	[EMPLOYMENTDATE] := P_EMPLOYMENTDATE;
+	-- Установка значения реквизита "Телефон"
+	[PHONE] := P_PHONE;
+	-- Установка значения реквизита "ИНН"
+	[INN] := P_INN;
+	-- Установка значения реквизита "Уволен"
+	[FIRED] := P_FIRED ;
+	-- Установка значения реквизита "Дата увольнения"
+	[DISMISSALDATE] := P_DISMISSALDATE;
+	
+	
+end;
+end;
+end;

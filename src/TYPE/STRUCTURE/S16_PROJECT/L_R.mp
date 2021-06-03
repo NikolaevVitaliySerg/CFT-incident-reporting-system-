@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MethodPresentation classId="S16_PROJECT" formatVersion="1.2" shortName="L_R">
+    <Properties>
+        <UserDriven>true</UserDriven>
+    </Properties>
+    <Parameters/>
+    <Variables/>
+    <Controls>
+        <Form>
+            <Properties>
+                <Caption>LOOK_REQ</Caption>
+                <Height>320</Height>
+                <ValidateName>Form1</ValidateName>
+                <Width>700</Width>
+            </Properties>
+            <Controls>
+                <Object>
+                    <Properties>
+                        <Caption>Проект</Caption>
+                        <ClassId>S16_PROJECT</ClassId>
+                        <Height>24</Height>
+                        <Left>8</Left>
+                        <Qualifier>%PARAM%.P_S16_PROJECT_REF</Qualifier>
+                        <TabIndex>1</TabIndex>
+                        <Tips>Объект: Проект</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Object1</ValidateName>
+                        <Width>120</Width>
+                    </Properties>
+                </Object>
+                <Grid>
+                    <Properties>
+                        <Caption>Заявка</Caption>
+                        <CheckValidate>true</CheckValidate>
+                        <ClassId>S16_REQUEST</ClassId>
+                        <Height>240</Height>
+                        <Left>8</Left>
+                        <Qualifier>%PARAM%.P_S16_REQUEST</Qualifier>
+                        <TabIndex>2</TabIndex>
+                        <Tips>Грид: Заявка</Tips>
+                        <Top>40</Top>
+                        <ValidateName>Grid1</ValidateName>
+                        <Width>684</Width>
+                    </Properties>
+                    <Controls>
+                        <Gridcol>
+                            <Properties>
+                                <Caption>Номер заявки</Caption>
+                                <ClassId>NUMBER</ClassId>
+                                <Qualifier>%PARAM%.P_S16_REQUEST.NUMBERREQUEST</Qualifier>
+                                <Tips>Колонка: Номер заявки</Tips>
+                                <ValidateName>Gridcol1</ValidateName>
+                                <Width>136</Width>
+                            </Properties>
+                        </Gridcol>
+                        <Gridcol>
+                            <Properties>
+                                <Caption>Название</Caption>
+                                <ClassId>STRING_50</ClassId>
+                                <Qualifier>%PARAM%.P_S16_REQUEST.NAME</Qualifier>
+                                <Tips>Колонка: Название</Tips>
+                                <ValidateName>Gridcol2</ValidateName>
+                                <Width>136</Width>
+                            </Properties>
+                        </Gridcol>
+                        <Gridcol>
+                            <Properties>
+                                <Caption>Актуальные трудозатраты</Caption>
+                                <ClassId>NUMBER</ClassId>
+                                <Qualifier>%PARAM%.P_S16_REQUEST.PLANNEDLABOUR</Qualifier>
+                                <Tips>Колонка: Плановые трудозатраты</Tips>
+                                <ValidateName>Gridcol5</ValidateName>
+                                <Width>136</Width>
+                            </Properties>
+                        </Gridcol>
+                        <Gridcol>
+                            <Properties>
+                                <Caption>Ответственный</Caption>
+                                <ClassId>S16_EMPLOYEE_REF</ClassId>
+                                <Qualifier>%PARAM%.P_S16_REQUEST.RESPONSIBLE_ID</Qualifier>
+                                <Tips>Колонка: Ответственный</Tips>
+                                <ValidateName>Gridcol8</ValidateName>
+                                <Visible>false</Visible>
+                                <Width>136</Width>
+                            </Properties>
+                        </Gridcol>
+                        <Gridcol>
+                            <Properties>
+                                <Caption>Ответственный</Caption>
+                                <ClassId>STRING_50</ClassId>
+                                <Depend>%PARAM%.P_S16_REQUEST.RESPONSIBLE_ID</Depend>
+                                <Qualifier>%PARAM%.P_S16_REQUEST.RESPONSIBLE_ID.NAME</Qualifier>
+                                <Tips>Колонка: Полное имя</Tips>
+                                <ValidateName>Gridcol3</ValidateName>
+                                <Width>136</Width>
+                            </Properties>
+                        </Gridcol>
+                    </Controls>
+                </Grid>
+                <Button>
+                    <Properties>
+                        <Caption>OK</Caption>
+                        <Height>24</Height>
+                        <Left>404</Left>
+                        <Qualifier>OK</Qualifier>
+                        <TabIndex>11</TabIndex>
+                        <Tips>Выполнить операцию</Tips>
+                        <Top>288</Top>
+                        <ValidateName>Ok</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+                <Button>
+                    <Properties>
+                        <Caption>Отмена</Caption>
+                        <Height>24</Height>
+                        <Left>552</Left>
+                        <Qualifier>CANCEL</Qualifier>
+                        <TabIndex>12</TabIndex>
+                        <Tips>Отказ от выполнения</Tips>
+                        <Top>288</Top>
+                        <ValidateName>Cancel</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+                <Text>
+                    <Properties>
+                        <CheckValidate>true</CheckValidate>
+                        <ClassId>STRING_32000</ClassId>
+                        <Height>24</Height>
+                        <Left>8</Left>
+                        <Qualifier>%VAR%.V_EXEC</Qualifier>
+                        <TabIndex>0</TabIndex>
+                        <Tips>Клиент скрипт</Tips>
+                        <Top>288</Top>
+                        <ValidateName>V_EXEC</ValidateName>
+                        <Visible>false</Visible>
+                        <Width>140</Width>
+                    </Properties>
+                </Text>
+                <Number>
+                    <Properties>
+                        <Caption>Индекс таблицы</Caption>
+                        <CheckValidate>true</CheckValidate>
+                        <ClassId>NUMBER</ClassId>
+                        <Height>24</Height>
+                        <Left>156</Left>
+                        <Qualifier>%VAR%.V_IDX</Qualifier>
+                        <TabIndex>0</TabIndex>
+                        <Tips>Индекс таблицы</Tips>
+                        <Top>288</Top>
+                        <ValidateName>V_IDX</ValidateName>
+                        <Visible>false</Visible>
+                        <Width>140</Width>
+                    </Properties>
+                </Number>
+                <Text>
+                    <Properties>
+                        <ClassId>STRING_50</ClassId>
+                        <Depend>%PARAM%.P_S16_PROJECT_REF</Depend>
+                        <Height>24</Height>
+                        <Left>136</Left>
+                        <Qualifier>%PARAM%.P_S16_PROJECT_REF.NAME</Qualifier>
+                        <TabIndex>0</TabIndex>
+                        <Tips>Название</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Text1</ValidateName>
+                        <Width>560</Width>
+                    </Properties>
+                </Text>
+            </Controls>
+        </Form>
+    </Controls>
+</MethodPresentation>

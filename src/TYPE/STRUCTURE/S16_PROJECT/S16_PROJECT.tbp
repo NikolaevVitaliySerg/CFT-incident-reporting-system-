@@ -1,0 +1,13 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Проект')
+class S16_PROJECT {
+	@name('Номер проекта')           NUMBERPROJECT  [NUMBER];
+	@name('Название')                NAME           [STRING_50];
+	@name('Направление')             DIRECTION_ID   [S16_DIRECTIO_REF];
+	@name('Дата создания')           DATECREATION   [DATE];
+	@name('Дата завершения')         DATECOMPLETEON [DATE];
+	@name('Плановые трудозатраты')   PLANNEDLABOUR  [NUMBER];
+	@name('Актуальные трудозатраты') ACTUALLABOUR   [NUMBER];
+	@name('Менеджер')                MANAGER_ID     [S16_EMPLOYEE_REF];
+}

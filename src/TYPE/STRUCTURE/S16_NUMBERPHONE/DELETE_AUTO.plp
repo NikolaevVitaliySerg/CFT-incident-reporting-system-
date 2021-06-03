@@ -1,0 +1,6 @@
+class S16_NUMBERPHONE;
+
+@name('Удалить')
+@tag('CREATED')
+destructor DELETE_AUTO is
+end;

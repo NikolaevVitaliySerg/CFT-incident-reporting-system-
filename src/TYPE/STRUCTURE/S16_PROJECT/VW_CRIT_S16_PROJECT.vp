@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_PROJECT" shortName="VW_CRIT_S16_PROJECT">
+    <Properties/>
+    <Columns>
+        <Column alias="C_NUMBERPROJECT" referenceId="0">
+            <Name>Номер проекта</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_NAME" referenceId="0">
+            <Name>Название</Name>
+            <Resizeable>true</Resizeable>
+            <Width>35</Width>
+        </Column>
+        <Column alias="C_DIRECTION" referenceId="1">
+            <Name>Направление</Name>
+            <Resizeable>true</Resizeable>
+            <Width>25</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_DATECREATION" referenceId="0">
+            <Name>Дата создания</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_DATECOMPLETEON" referenceId="0">
+            <Name>Дата завершения</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_PLANNEDLABOUR" referenceId="0">
+            <Name>Плановые трудозатраты</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_ACTUALLABOUR" referenceId="0">
+            <Name>Актуальные трудозатраты</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_MANAGER" referenceId="1">
+            <Name>Менеджер</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+    </Columns>
+</ViewPresentation>

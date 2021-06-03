@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<scxml xmlns="http://www.w3.org/2005/07/scxml" xmlns:platform="http://www.cft.ru/platform-platform-ide-scxml" version="1.0" initial="NEW" platform:classId="S16_TASKS" platform:runtransition="static">
+  <state id="IN_PROGRESS" platform:name="В работе" platform:useindex="false">
+    <transition event="IN_PROGRESS.END" target="END" platform:id="PROG_END" platform:name="В работе -&gt;  Завершена" platform:position="2" platform:manual="true">
+      <platform:action method="PROC_END"/>
+    </transition>
+  </state>
+  <state id="NEW" platform:name="Новая" platform:useindex="false">
+    <transition event="NEW.IN_PROGRESS" target="IN_PROGRESS" platform:id="NEW_PROG" platform:name="Новая -&gt; В работе" platform:position="1" platform:manual="true">
+      <platform:action method="NEW_PROC"/>
+    </transition>
+  </state>
+  <state id="END" platform:name="Завершена" platform:useindex="false">
+    <transition event="END.NEW" target="NEW" platform:id="END_NEW" platform:name="Завершена -&gt; Новая" platform:position="3" platform:manual="true"/>
+  </state>
+</scxml>

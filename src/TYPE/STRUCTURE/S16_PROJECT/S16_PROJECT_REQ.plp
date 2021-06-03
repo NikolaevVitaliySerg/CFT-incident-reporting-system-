@@ -1,0 +1,42 @@
+class S16_PROJECT;
+@import_plsql(true)
+
+@name('Фильтр для VW_CRIT_S16_PROJECT_REQUEST') /* Свойство операции "Наименование" */
+@speciality('filter')
+static method S16_PROJECT_REQ is
+
+/* Секция глобальных переменных *
+@name('пример переменной 1')
+public V_EXAMPLE1 [STRING_100];
+@name('пример переменной 2')
+public V_EXAMPLE2 [NUMBER];
+/* Конец секции глобальных переменных */
+	
+/* Описания */
+
+/* Блок инициализации */
+
+/* Описания */
+
+S16_PROJECT_REQ (
+	@name('Дата создания')
+	P_DATECREATION  in [DATE]
+) is
+
+validate is
+/* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+		null;
+	end if;
+end;
+
+execute is
+/* Секция "Тело" */
+begin
+	--executor.set_context ('P_DATECREATION', P_DATECREATION);
+	executor.set_context('P_DATECREATION', to_char(P_DATECREATION, 'dd.mm.yyyy'));
+end;
+
+end; 
+end; /* конeц method S16_PROJECT_REQ */

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_TASKS" shortName="VW_CRIT_S16_TASKS">
+    <Properties/>
+    <Columns>
+        <Column alias="C_NUMBER" referenceId="0">
+            <Name>Номер задачи</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_ORDERTASK" referenceId="0">
+            <Name>Порядок задачи</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_NAME" referenceId="0">
+            <Name>Название</Name>
+            <Resizeable>true</Resizeable>
+            <Width>25</Width>
+        </Column>
+        <Column alias="C_TYPETASK" referenceId="1">
+            <Name>Тип задачи</Name>
+            <Resizeable>true</Resizeable>
+            <Width>20</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_REQUEST" referenceId="1">
+            <Name>Заявка</Name>
+            <Resizeable>true</Resizeable>
+            <Width>20</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_DATECREATION" referenceId="0">
+            <Name>Дата создания</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_DATECOMPLETEON" referenceId="0">
+            <Name>Дата завершения</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_PERFORMER" referenceId="1">
+            <Name>Исполнитель</Name>
+            <Resizeable>true</Resizeable>
+            <Width>20</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_STATE" referenceId="1">
+            <Name>Состояние</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_LABOUR" referenceId="1">
+            <Name>Трудозатраты</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+    </Columns>
+</ViewPresentation>

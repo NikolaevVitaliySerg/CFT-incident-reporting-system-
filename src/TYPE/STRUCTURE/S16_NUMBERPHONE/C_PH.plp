@@ -1,0 +1,42 @@
+class S16_NUMBERPHONE;
+
+@name('CHANGEPHONE') /* Свойство операции "Наименование" */
+method C_PH is
+
+@name('Клиент скрипт')  
+public V_EXEC [STRING_32000];
+@name('Индекс таблицы') 
+public V_IDX  [NUMBER];
+	
+/* Описания */
+
+/* Блок инициализации */
+
+/* Описания */
+
+C_PH
+
+(
+	@name('Номер телефона')
+	 P_S16_NUMBERPHONE       in table of [S16_NUMBERPHONE]
+	 --@name('Номер телефона исправленный')
+	 --P_S16_PHONENUMBERCH     in table of [S16_NUMBERPHONE]
+) 
+
+	 is
+
+validate is /* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+
+		null;
+	end if;
+end;
+
+execute is /* Секция "Тело" */
+begin
+	null;
+end;
+
+end; 
+end; /* конeц method C_PH */

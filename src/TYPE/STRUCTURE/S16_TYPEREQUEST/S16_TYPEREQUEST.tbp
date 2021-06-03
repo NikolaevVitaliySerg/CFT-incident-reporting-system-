@@ -1,0 +1,6 @@
+@dictionary
+@entity('TYPE')
+@name('s16.ТипЗаявки')
+class S16_TYPEREQUEST {
+	@name('Название') NAME [STRING_50];
+}

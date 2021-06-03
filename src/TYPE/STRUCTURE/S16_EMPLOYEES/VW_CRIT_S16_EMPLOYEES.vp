@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_EMPLOYEES" shortName="VW_CRIT_S16_EMPLOYEES">
+    <Properties/>
+    <Columns>
+        <Column alias="C_PERSONNELNUMBER" referenceId="0">
+            <Name>Табельный номер</Name>
+            <Align>right</Align>
+            <NumberPrecision>0</NumberPrecision>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_NAME" referenceId="0">
+            <Name>Полное имя</Name>
+            <Resizeable>true</Resizeable>
+            <Width>20</Width>
+        </Column>
+        <Column alias="C_POST" referenceId="1">
+            <Name>Должность</Name>
+            <Resizeable>true</Resizeable>
+            <Width>20</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_SALARY" referenceId="1">
+            <Name>Оклад</Name>
+            <Align>right</Align>
+            <NumberPrecision>2</NumberPrecision>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_EDUCATION" referenceId="0">
+            <Name>Образование</Name>
+            <Resizeable>true</Resizeable>
+            <Width>15</Width>
+        </Column>
+        <Column alias="C_EMPLOYMENT" referenceId="0">
+            <Name>Дата приема на работу</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_PHONE" referenceId="0">
+            <Name>Телефон</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_INN" referenceId="0">
+            <Name>ИНН</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+    </Columns>
+</ViewPresentation>

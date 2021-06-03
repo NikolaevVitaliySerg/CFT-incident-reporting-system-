@@ -1,0 +1,59 @@
+class S16_TASKS;
+
+@name('PROC_END') /* Свойство операции "Наименование" */
+method PROC_END is
+MIN_NUM [string];
+PROC_END
+
+	 is
+
+validate is /* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+		null;
+	end if;
+end;
+
+execute is /* Секция "Тело" */
+state_name  in this;
+--station  in this;
+--ref_tasks ref [S16_TASKS];
+--inx number;
+begin
+	--select x(min(x.[ORDERTASK])) in [S16_TASKS] where (this.[TYPETASK_ID].[NAME]=[REQUEST_ID].[NAME]
+	--	                                               and station%statename <> 'Завершена') into MIN_NUM;
+	--	 if this.[ORDERTASK]<MIN_NUM then
+	--	pragma error('Есть незакрытые задачи с более высоким приоритетом');
+	--     end if;
+	
+	
+	/*inx:=0;
+	select x(count(1)) in :: [S16_TASKS] 
+	where x.[ORDERTASK]<this.[ORDERTASK] 
+	and x%statename != 'Завершена' into inx;
+	if inx > 0 then
+		pragma error ('Задача не может быть завершена т.к. не завершены задачи выше приоритетом');	
+	end if;
+	this.[DATECOMPLETEON]:=sysdate;*/
+	
+	begin
+		locate state_name in ::[S16_TASKS] all
+			where state_name.[REQUEST_ID].[NAME] = this.[REQUEST_ID].[NAME]
+			and state_name.[ORDERTASK] < this.[ORDERTASK]
+			and (state_name%statename = 'Новая'
+			or state_name%statename = 'В работе');
+			
+	exception
+	when NO_DATA_FOUND then
+		NULL;
+	end;
+		if state_name%STATENAME = 'Новая' or state_name%STATENAME = 'В работе'  then
+			pragma error('Задача не может быть завершена т.к. не завершены задачи выше приоритетом');
+		else
+		this.[DATECOMPLETEON]:=sysdate;
+		end if;		
+		
+end;
+
+end; 
+end; /* конeц method PROC_END */

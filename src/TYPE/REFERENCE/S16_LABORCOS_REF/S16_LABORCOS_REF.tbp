@@ -1,0 +1,2 @@
+@name('Ссылка на "s16.Трудозатраты"')
+class S16_LABORCOS_REF is ref [S16_LABORCOSTS];

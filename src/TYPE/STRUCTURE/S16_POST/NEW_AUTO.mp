@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MethodPresentation classId="S16_POST" formatVersion="1.2" shortName="NEW_AUTO">
+    <Properties>
+        <UserDriven>true</UserDriven>
+    </Properties>
+    <Parameters/>
+    <Variables/>
+    <Controls>
+        <Form>
+            <Properties>
+                <Caption>Добавить</Caption>
+                <Height>104</Height>
+                <ValidateName>Form1</ValidateName>
+                <Width>635</Width>
+            </Properties>
+            <Controls>
+                <Label>
+                    <Properties>
+                        <Caption>Название должности:</Caption>
+                        <Height>24</Height>
+                        <Left>8</Left>
+                        <Qualifier>%PARAM%.P_NAME</Qualifier>
+                        <Tips>Поясняющая надпись (Название должности)</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Label1</ValidateName>
+                        <Width>174</Width>
+                    </Properties>
+                </Label>
+                <Text>
+                    <Properties>
+                        <ClassId>STRING_50</ClassId>
+                        <Height>24</Height>
+                        <Left>190</Left>
+                        <Qualifier>%PARAM%.P_NAME</Qualifier>
+                        <TabIndex>2</TabIndex>
+                        <Tips>Название должности</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Text1</ValidateName>
+                        <Width>437</Width>
+                    </Properties>
+                </Text>
+                <Label>
+                    <Properties>
+                        <Caption>Оклад:</Caption>
+                        <Height>24</Height>
+                        <Left>8</Left>
+                        <Qualifier>%PARAM%.P_SALARY</Qualifier>
+                        <Tips>Поясняющая надпись (Оклад)</Tips>
+                        <Top>40</Top>
+                        <ValidateName>Label2</ValidateName>
+                        <Width>174</Width>
+                    </Properties>
+                </Label>
+                <Number>
+                    <Properties>
+                        <Caption>Оклад</Caption>
+                        <ClassId>NUM_9_2</ClassId>
+                        <Height>24</Height>
+                        <Left>190</Left>
+                        <Qualifier>%PARAM%.P_SALARY</Qualifier>
+                        <TabIndex>4</TabIndex>
+                        <Tips>Оклад</Tips>
+                        <Top>40</Top>
+                        <ValidateName>Number1</ValidateName>
+                        <Width>437</Width>
+                    </Properties>
+                </Number>
+                <Button>
+                    <Properties>
+                        <Caption>OK</Caption>
+                        <Height>24</Height>
+                        <Left>339</Left>
+                        <Qualifier>OK</Qualifier>
+                        <TabIndex>5</TabIndex>
+                        <Tips>Выполнить операцию</Tips>
+                        <Top>72</Top>
+                        <ValidateName>Ok</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+                <Button>
+                    <Properties>
+                        <Caption>Отмена</Caption>
+                        <Height>24</Height>
+                        <Left>487</Left>
+                        <Qualifier>CANCEL</Qualifier>
+                        <TabIndex>6</TabIndex>
+                        <Tips>Отказ от выполнения</Tips>
+                        <Top>72</Top>
+                        <ValidateName>Cancel</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+            </Controls>
+        </Form>
+    </Controls>
+</MethodPresentation>

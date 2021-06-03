@@ -1,0 +1,32 @@
+class S16_TASKS;
+
+@name('Новая -> В работе') /* Свойство операции "Наименование" */
+method NEW_PROC is
+
+NEW_PROC
+
+
+	 is
+
+validate is /* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+		null;
+	end if;
+end;
+
+execute is /* Секция "Тело" */
+begin
+    declare
+    refRequest ref [S16_REQUEST];
+begin
+    refRequest := this.[REQUEST_ID];
+
+    if refRequest%statename <> 'В работе' then
+    pragma error ('Задачу нельзя перевести в состояние "в работе" т.к.
+	 заявка по этой задаче еще не "в работе"') ;
+    end if;
+end;
+end;
+end; 
+end; /* конeц method NEW_END */

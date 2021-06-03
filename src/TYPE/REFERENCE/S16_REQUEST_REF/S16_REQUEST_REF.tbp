@@ -1,0 +1,2 @@
+@name('Ссылка на "s16.Заявка"')
+class S16_REQUEST_REF is ref [S16_REQUEST];

@@ -1,0 +1,33 @@
+class S16_TYPEREQUEST;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Название')
+	P_NAME in [STRING_50]
+) is
+
+validate is
+	v_this ref [S16_TYPEREQUEST];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+end;
+
+execute is
+	v_this ref [S16_TYPEREQUEST];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

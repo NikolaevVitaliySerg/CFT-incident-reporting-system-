@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_LABORCOSTS" shortName="VW_CRIT_S16_LABORCOSTS">
+    <Properties/>
+    <Columns>
+        <Column alias="C_EMPLOYEE" referenceId="1">
+            <Name>Сотрудник</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+        <Column alias="C_DATECREATION" referenceId="0">
+            <Name>Дата выполнения</Name>
+            <Align>center</Align>
+            <DateFormat>Default(dd/MM/yyyy)</DateFormat>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_LABOUR" referenceId="0">
+            <Name>Плановые трудозатраты</Name>
+            <Align>right</Align>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+        <Column alias="C_TYPETASK" referenceId="1">
+            <Name>Тип задачи</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+            <Navigation>
+                <Transition>auto</Transition>
+            </Navigation>
+        </Column>
+    </Columns>
+</ViewPresentation>

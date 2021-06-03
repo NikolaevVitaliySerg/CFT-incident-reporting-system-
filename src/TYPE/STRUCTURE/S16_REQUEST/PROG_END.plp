@@ -1,0 +1,53 @@
+class S16_REQUEST;
+
+@name('PROG_END') /* Свойство операции "Наименование" */
+method PROG_END is
+
+PROG_END
+
+	 is
+
+validate is /* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+		null;
+	end if;
+end;
+
+execute is /* Секция "Тело" */
+--idx integer;
+ state_name ref [S16_TASKS];
+begin
+	
+	/*idx:=0;
+	select x(count(1)) in ::[S16_TASKS] where x%statename <> 'Завершена' into idx;
+	
+	if idx is not null then
+		pragma error ('Заявка не может быть завершена 
+		т.к есть не выполненные задания');
+	end if; 	
+	*/
+	
+	 begin
+		locate  state_name in ::[S16_TASKS] all
+			where (state_name%STATENAME = 'Новая' or state_name%STATENAME = 'В работе'
+		--		or state_name%STATENAME = 'Завершена'
+				)
+			and state_name.[REQUEST_ID].[NAME] = this.[NAME];
+	--		order by 'Новая', 'В работе', 'Завершена';
+	  exception
+	  when NO_DATA_FOUND then
+	  	NULL;
+	  end;	
+	if state_name%STATENAME != 'Завершена' then
+		pragma error('Заявка не может быть завершена  т.к есть не выполненные задачи');
+	else 
+		this.[DATECOMPLETEON]:=sysdate;
+	end if;
+	
+	
+	
+end;
+
+end; 
+end; /* конeц method PROG_END */

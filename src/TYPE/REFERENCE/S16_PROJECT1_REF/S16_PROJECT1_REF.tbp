@@ -1,0 +1,2 @@
+@name('Ссылка на "s.16_project"')
+class S16_PROJECT1_REF is ref [S16_PROJECT1];

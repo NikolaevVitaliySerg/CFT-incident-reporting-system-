@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_STATE" shortName="VW_CRIT_S16_STATE">
+    <Properties/>
+    <Columns>
+        <Column alias="C_NAME" referenceId="0">
+            <Name>Название</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+    </Columns>
+</ViewPresentation>

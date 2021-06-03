@@ -1,0 +1,32 @@
+class S16_POST;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Название должности')
+	P_NAME in [STRING_50],
+	@name('Оклад')
+	P_SALARY in [NUM_9_2]
+) return ref [S16_POST] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_NAME := this.[NAME];
+		P_SALARY := this.[SALARY];
+	end if;
+	-- End initialization of parameters and variables
+end;
+
+execute is
+begin
+	-- Установка значения реквизита "Название должности"
+	[NAME] := P_NAME;
+	-- Установка значения реквизита "Оклад"
+	[SALARY] := P_SALARY;
+end;
+end;
+end;

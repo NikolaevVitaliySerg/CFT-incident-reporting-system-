@@ -1,0 +1,39 @@
+class S16_LABORCOSTS;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Сотрудник')
+	P_EMPLOYEE_ID in [S16_EMPLOYEE_REF],
+	@name('Дата выполнения')
+	P_DATECREATION in [DATE],
+	@name('Плановые трудозатраты')
+	P_LABOUR in [NUMBER],
+	@name('Тип задачи')
+	P_TYPETASK_ID in [S16_TYPETASK_REF]
+) is
+
+validate is
+	v_this ref [S16_LABORCOSTS];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+end;
+
+execute is
+	v_this ref [S16_LABORCOSTS];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

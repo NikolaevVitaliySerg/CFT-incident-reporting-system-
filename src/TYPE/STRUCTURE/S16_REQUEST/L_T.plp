@@ -1,0 +1,48 @@
+class S16_REQUEST;
+
+@name('Просмотреть задачи по заявке') /* Свойство операции "Наименование" */
+method L_T is
+@name('Клиент скрипт') public V_EXEC [STRING_32000];
+@name('Индекс таблицы')public V_IDX  [NUMBER];
+L_T (
+@name('Заявка') P_S16_REQUEST_REF in ref      [S16_REQUEST],
+@name('Задача') P_S16_TASK        in table of [S16_TASKS]
+)
+
+	 is
+
+validate is /* Секция "Проверка" */
+begin
+	if P_MESSAGE = 'DEFAULT' then
+		P_S16_REQUEST_REF:=this;
+		--Заполнение таблицы при загрузке формы
+		for (select x(x.[NUMBER] 		 C_NUMBER
+					,x.[ORDERTASK] 		 C_ORDERTASK
+					,x.[NAME]			 C_NAME
+					,x.[PERFORMER_ID]    C_PERFORMER
+					,x.[TYPETASK_ID]     C_TYPETASK
+					,x.[LABORCOSTS_ID]	 C_LABORCOST
+					--,x%statename 				 C_STATE
+		) in ::[S16_TASKS]
+		where x.[REQUEST_ID]=P_S16_REQUEST_REF
+		)
+	
+		
+		loop
+			P_S16_TASK(P_S16_TASK.count+1).[NUMBER]		:=X.C_NUMBER;
+			P_S16_TASK(P_S16_TASK.count).[ORDERTASK]    :=X.C_ORDERTASK;
+			P_S16_TASK(P_S16_TASK.count).[NAME]  		:=X.C_NAME;
+			P_S16_TASK(P_S16_TASK.count).[PERFORMER_ID] :=X.C_PERFORMER;
+			P_S16_TASK(P_S16_TASK.count).[TYPETASK_ID]  :=X.C_TYPETASK;
+			P_S16_TASK(P_S16_TASK.count).[LABORCOSTS_ID]:=X.C_LABORCOST;
+		end loop;
+	end if;
+end;
+
+execute is /* Секция "Тело" */
+begin
+	null;
+end;
+
+end; 
+end; /* конeц method L_T */

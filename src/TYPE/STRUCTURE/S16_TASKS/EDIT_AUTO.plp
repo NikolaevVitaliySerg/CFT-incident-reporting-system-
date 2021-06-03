@@ -1,0 +1,68 @@
+class S16_TASKS;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Номер задачи')
+	P_NUMBER in [NUMBER],
+	@name('Порядок задачи')
+	P_ORDERTASK in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Тип задачи')
+	P_TYPETASK_ID in [S16_TYPETASK_REF],
+	@name('Заявка')
+	P_REQUEST_ID in [S16_REQUEST_REF],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Исполнитель')
+	P_PERFORMER_ID in [S16_EMPLOYEE_REF]
+) is
+
+validate is
+	v_this ref [S16_TASKS];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+	
+	if P_MESSAGE = 'VALIDATE' then
+		if P_INFO = 'OK' then
+			if P_NUMBER is null then
+				pragma error ('Необходимо ввести номер задачи');
+			end if;
+			
+			if P_ORDERTASK is null then 
+				pragma error ('Необходимо ввести порядок задачи');
+			end if;
+			
+			if P_NAME is null then 
+				pragma error ('Необходимо ввести название задачи');
+			end if;
+			
+			if P_DATECREATION is null then 
+				pragma error ('Необходимо ввести дату создания задачи');
+			end if;			
+		end if;
+	end if;
+	
+end;
+
+execute is
+	v_this ref [S16_TASKS];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

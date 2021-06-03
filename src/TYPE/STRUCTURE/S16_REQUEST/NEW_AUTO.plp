@@ -1,0 +1,91 @@
+class S16_REQUEST;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Номер проекта')
+	P_NUMBERREQUEST in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Тип заявки')
+	P_TYPEREQUEST_ID in [S16_TYPEREQU_REF],
+	@name('Проект')
+	P_PROJECT_ID in [S16_PROJECT_REF],
+	@name('Плановые трудозатраты')
+	P_PLANNEDLABOUR in [NUMBER],
+--	@name('Актуальные трудозатраты')
+--	P_ACTUALLABOUR in [NUMBER],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Ответственный')
+	P_RESPONSIBLE_ID in [S16_EMPLOYEE_REF]
+) return ref [S16_REQUEST] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_NUMBERREQUEST := this.[NUMBERREQUEST];
+		P_NAME := this.[NAME];
+		P_TYPEREQUEST_ID := this.[TYPEREQUEST_ID];
+		P_PROJECT_ID := this.[PROJECT_ID];
+		P_PLANNEDLABOUR := this.[PLANNEDLABOUR];
+--		P_ACTUALLABOUR := this.[ACTUALLABOUR];
+		P_DATECREATION := this.[DATECREATION];
+		P_DATECOMPLETEON := this.[DATECOMPLETEON];
+		P_RESPONSIBLE_ID := this.[RESPONSIBLE_ID];
+	end if;
+	-- End initialization of parameters and variables
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_NUMBERREQUEST is null then
+				pragma error ('Необходимо ввести номер заявки');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Необходимо ввести название заявки');
+			end if;
+			
+			if P_DATECREATION is null then
+				pragma error ('Необходимо ввести дату создания заявки');
+			end if;
+		end if;
+	end if;
+end;
+
+execute is
+begin
+	
+	for (select x(x.[NUMBERREQUEST] : C_NUMBERREQUEST)
+	in ::[S16_REQUEST] all
+	where P_NUMBERREQUEST = x.[NUMBERREQUEST] 
+	and rownum >= 1
+	)
+	loop
+		pragma error ('Номер заявки уже существует, введите другой номер');
+	end loop;
+	-- Установка значения реквизита "Номер проекта"
+	[NUMBERREQUEST] := P_NUMBERREQUEST;
+	-- Установка значения реквизита "Название"
+	[NAME] := P_NAME;
+	-- Установка значения реквизита "Тип заявки"
+	[TYPEREQUEST_ID] := P_TYPEREQUEST_ID;
+	-- Установка значения реквизита "Проект"
+	[PROJECT_ID] := P_PROJECT_ID;
+	-- Установка значения реквизита "Плановые трудозатраты"
+	[PLANNEDLABOUR] := P_PLANNEDLABOUR;
+	-- Установка значения реквизита "Актуальные трудозатраты"
+--	[ACTUALLABOUR] := P_ACTUALLABOUR;
+--	-- Установка значения реквизита "Дата создания"
+	[DATECREATION] := P_DATECREATION;
+	-- Установка значения реквизита "Дата завершения"
+	[DATECOMPLETEON] := P_DATECOMPLETEON;
+	-- Установка значения реквизита "Ответственный"
+	[RESPONSIBLE_ID] := P_RESPONSIBLE_ID;
+end;
+end;
+end;

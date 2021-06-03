@@ -1,0 +1,6 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Состояние')
+class S16_STATE {
+	@name('Название') NAME [STRING_50];
+}

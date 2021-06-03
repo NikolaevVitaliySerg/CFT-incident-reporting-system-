@@ -1,0 +1,67 @@
+class S16_LABORCOSTS;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Сотрудник')
+	P_EMPLOYEE_ID in [S16_EMPLOYEE_REF],
+	@name('Дата выполнения')
+	P_DATECREATION in [DATE],
+	@name('Плановые трудозатраты')
+	P_LABOUR in [NUMBER],
+	@name('Тип задачи')
+	P_TYPETASK_ID in [S16_TYPETASK_REF]
+) return ref [S16_LABORCOSTS] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_EMPLOYEE_ID := this.[EMPLOYEE_ID];
+		P_DATECREATION := this.[DATECREATION];
+		P_LABOUR := this.[LABOUR];
+		P_TYPETASK_ID := this.[TYPETASK_ID];
+	end if;
+	
+	if p_message = 'VALIDATE' then
+		if p_info = 'OK' then
+		
+			
+			if P_LABOUR is null then
+				pragma error ('Необходимо ввести трудозатраты');
+			end if;
+			
+			if P_DATECREATION is null then
+				pragma error ('Необходимо ввести дату');
+			end if;
+			
+		end if;
+	end if;
+	-- End initialization of parameters and variables
+end;
+
+execute is
+begin
+	-- Установка значения реквизита "Сотрудник"
+	[EMPLOYEE_ID] := P_EMPLOYEE_ID;
+	
+--	if P_DATECREATION >= TASK_ID.[DATECREATION] 
+--	AND P_DATECREATION <=TASK_ID.[DATECOMPLETEON] then
+--		[DATECREATION] := P_DATECREATION;
+--	else
+--		pragma error ('Дата создания трудозатрат введена не корректно');
+--	end if;
+
+	 	
+	
+	-- Установка значения реквизита "Дата выполнения"
+	[DATECREATION] := P_DATECREATION;
+	-- Установка значения реквизита "Плановые трудозатраты"
+	[LABOUR] := P_LABOUR;
+	-- Установка значения реквизита "Тип задачи"
+	[TYPETASK_ID] := P_TYPETASK_ID;
+end;
+end;
+end;

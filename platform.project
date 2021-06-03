@@ -1,0 +1,7 @@
+#Tue Mar 30 21:38:26 NOVT 2021
+version=2
+src.path=src
+src-gen.path=src-gen
+vp.generate.base_class=false
+src.org.hierarchy=false
+tbp.annotation.version2=true

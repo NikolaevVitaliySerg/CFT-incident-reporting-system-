@@ -1,0 +1,2 @@
+@name('Ссылка на "s16_Сотрудники"')
+class S16_EMPLOYEE_REF is ref [S16_EMPLOYEES];

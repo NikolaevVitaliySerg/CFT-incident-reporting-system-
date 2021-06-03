@@ -1,0 +1,64 @@
+class S16_EMPLOYEES;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Табельный номер')
+	P_PERSONNELNUMBER in [SHORT4],
+	@name('Полное имя')
+	P_NAME in [STRING_50],
+	@name('Должность')
+	P_POST in [S16_POST_REF],
+	@name('Образование')
+	P_EDUCATION in [STRING_50],
+	@name('Дата приема на работу')
+	P_EMPLOYMENTDATE in [DATE],
+	@name('Телефон')
+	P_PHONE in [NUMBER],
+	@name('ИНН')
+	P_INN in [NUMBER],
+	@name('Уволен')
+	P_FIRED in [BOOLEAN],
+	@name('Дата увольнения')
+	P_DISMISSALDATE in [DATE]
+) is
+
+validate is
+	v_this ref [S16_EMPLOYEES];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_PERSONNELNUMBER is null then
+				pragma error ('Необходимо ввести табельный номер сотрудника');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Необходимо ввести имя сотрудника');
+			end if;
+			
+			if P_POST is null then
+				pragma error ('Необходимо ввести должность сотрудника');
+			end if;
+		end if;
+	end if;
+end;
+
+execute is
+	v_this ref [S16_EMPLOYEES];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

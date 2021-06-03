@@ -1,0 +1,2 @@
+@name('Ссылка на "s16.Должности"')
+class S16_POST_REF is ref [S16_POST];

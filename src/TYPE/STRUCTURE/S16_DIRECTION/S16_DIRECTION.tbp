@@ -1,0 +1,7 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Направление')
+class S16_DIRECTION {
+	@name('Название') NAME        [STRING_50];
+	@name('Описание') DESCRIPTION [STRING_128];
+}

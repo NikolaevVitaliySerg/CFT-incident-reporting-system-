@@ -1,0 +1,69 @@
+class S16_PROJECT;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Номер проекта')
+	P_NUMBERPROJECT in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Направление')
+	P_DIRECTION_ID in [S16_DIRECTIO_REF],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Плановые трудозатраты')
+	P_PLANNEDLABOUR in [NUMBER],
+	@name('Актуальные трудозатраты')
+	P_ACTUALLABOUR in [NUMBER],
+	@name('Менеджер')
+	P_MANAGER_ID in [S16_EMPLOYEE_REF]
+) is
+
+validate is
+	v_this ref [S16_PROJECT];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+	
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_NUMBERPROJECT is null then
+				pragma error ('Не указан номер проекта');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Не указано название проекта');
+			end if;
+			
+			if P_DIRECTION_ID is null then
+				pragma error ('Не указано направление проекта');
+			end if;
+				
+			if P_DATECREATION is null then
+				pragma error ('Не указана дата создания проекта');
+			end if;
+			
+		end if;
+	end if;
+	
+end;
+
+execute is
+	v_this ref [S16_PROJECT];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

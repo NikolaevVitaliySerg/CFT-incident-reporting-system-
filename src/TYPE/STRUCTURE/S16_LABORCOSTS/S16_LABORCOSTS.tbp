@@ -1,0 +1,9 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Трудозатраты')
+class S16_LABORCOSTS {
+	@name('Сотрудник')             EMPLOYEE_ID  [S16_EMPLOYEE_REF];
+	@name('Дата выполнения')       DATECREATION [DATE];
+	@name('Плановые трудозатраты') LABOUR       [NUMBER];
+	@name('Тип задачи')            TYPETASK_ID  [S16_TYPETASK_REF];
+}

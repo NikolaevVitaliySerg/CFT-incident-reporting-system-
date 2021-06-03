@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ViewPresentation classId="S16_DIRECTION" shortName="VW_CRIT_S16_DIRECTION">
+    <Properties/>
+    <Columns>
+        <Column alias="C_NAME" referenceId="0">
+            <Name>Название</Name>
+            <Resizeable>true</Resizeable>
+            <Width>30</Width>
+        </Column>
+        <Column alias="C_DESCRIPTION" referenceId="0">
+            <Name>Описание</Name>
+            <Resizeable>true</Resizeable>
+            <Width>10</Width>
+        </Column>
+    </Columns>
+</ViewPresentation>

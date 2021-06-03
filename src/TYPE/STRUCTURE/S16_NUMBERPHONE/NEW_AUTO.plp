@@ -1,0 +1,52 @@
+class S16_NUMBERPHONE;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Номер телефона')
+	P_PHONENUMBER in [STRING]
+--	@name('Номер телефона исправленный')
+--	P_PHONENUMBERCH in [STRING]
+) return ref [S16_NUMBERPHONE] is
+
+validate is
+
+
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_PHONENUMBER := this.[PHONENUMBER];
+--		P_PHONENUMBERCH := this.[PHONENUMBERCH];
+	end if;
+		
+		
+		if P_MESSAGE= 'VALIDATE' then 
+		 	if p_info = 'OK' then
+		 		if substr(P_PHONENUMBER,1,3)='650' then
+		 			P_PHONENUMBER:=REPLACE(P_PHONENUMBER,'650' ,'670');
+		 		end if;
+		 		
+		 		if substr(P_PHONENUMBER,4,3)='123' then
+		 			P_PHONENUMBER:=REPLACE(P_PHONENUMBER, '123','133');
+		 		end if;
+		 		
+				if  instr(P_PHONENUMBER,'.', 4)=1 or instr(P_PHONENUMBER, '.', 8)=1 then
+					P_PHONENUMBER:=REPLACE (P_PHONENUMBER, '.', '-');	
+			
+				end if;
+		    end if;		
+		end if;
+	-- End initialization of parameters and variables
+	end;
+
+execute is
+begin
+	-- Установка значения реквизита "Номер телефона"
+	[PHONENUMBER] := P_PHONENUMBER;
+	-- Установка значения реквизита "Номер телефона исправленный"
+--	[PHONENUMBERCH] := P_PHONENUMBERCH;
+end;
+end;
+end;

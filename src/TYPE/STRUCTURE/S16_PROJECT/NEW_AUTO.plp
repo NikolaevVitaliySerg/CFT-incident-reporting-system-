@@ -1,0 +1,93 @@
+class S16_PROJECT;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Номер проекта')
+	P_NUMBERPROJECT in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Направление')
+	P_DIRECTION_ID in [S16_DIRECTIO_REF],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Плановые трудозатраты')
+	P_PLANNEDLABOUR in [NUMBER],
+	--@name('Актуальные трудозатраты')
+	--P_ACTUALLABOUR in [NUMBER],
+	@name('Менеджер')
+	P_MANAGER_ID in [S16_EMPLOYEE_REF]
+) return ref [S16_PROJECT] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_NUMBERPROJECT := this.[NUMBERPROJECT];
+		P_NAME := this.[NAME];
+		P_DIRECTION_ID := this.[DIRECTION_ID];
+		P_DATECREATION := this.[DATECREATION];
+		P_DATECOMPLETEON := this.[DATECOMPLETEON];
+		P_PLANNEDLABOUR := this.[PLANNEDLABOUR];
+		--P_ACTUALLABOUR := this.[ACTUALLABOUR];
+		P_MANAGER_ID := this.[MANAGER_ID];
+	end if;
+	-- End initialization of parameters and variables
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_NUMBERPROJECT is null then
+				pragma error ('Необходимо ввести номер проекта');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Необходимо ввести название проекта');
+			end if;
+			
+			if P_DIRECTION_ID is null then
+				pragma error ('Необходимо ввести направление проекта');
+			end if;
+				
+			if P_DATECREATION is null then
+				pragma error ('Необходимо ввести дату создания проекта');
+			end if;
+			
+		end if;
+	end if;
+	
+end;
+
+execute is
+begin
+	
+	for (select x(x.[NUMBERPROJECT] : C_NUMBERPROJECT)
+	in ::[S16_PROJECT] all
+	where P_NUMBERPROJECT = x.[NUMBERPROJECT] 
+	and rownum >= 1
+	)
+	loop
+		pragma error ('Номер проекта уже существует, введите другой номер');
+	end loop;
+	[NUMBERPROJECT] := P_NUMBERPROJECT;
+	-- Установка значения реквизита "Номер проекта"
+	[NUMBERPROJECT] := P_NUMBERPROJECT;
+	-- Установка значения реквизита "Название"
+	[NAME] := P_NAME;
+	-- Установка значения реквизита "Направление"
+	[DIRECTION_ID] := P_DIRECTION_ID;
+	-- Установка значения реквизита "Дата создания"
+	[DATECREATION] := P_DATECREATION;
+	-- Установка значения реквизита "Дата завершения"
+	[DATECOMPLETEON] := P_DATECOMPLETEON;
+	-- Установка значения реквизита "Плановые трудозатраты"
+	[PLANNEDLABOUR] := P_PLANNEDLABOUR;
+	-- Установка значения реквизита "Актуальные трудозатраты"
+--	[ACTUALLABOUR] := P_ACTUALLABOUR;
+	-- Установка значения реквизита "Менеджер"
+	[MANAGER_ID] := P_MANAGER_ID;
+end;
+end;
+end;

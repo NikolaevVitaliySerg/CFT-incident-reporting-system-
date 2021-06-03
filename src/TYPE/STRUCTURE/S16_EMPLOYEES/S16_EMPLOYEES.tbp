@@ -1,0 +1,14 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Сотрудники')
+class S16_EMPLOYEES {
+	@name('Табельный номер')       PERSONNELNUMBER [SHORT4];
+	@name('Полное имя')            NAME            [STRING_50];
+	@name('Должность')             POST_ID         [S16_POST_REF];
+	@name('Образование')           EDUCATION       [STRING_50];
+	@name('Дата приема на работу') EMPLOYMENTDATE  [DATE];
+	@name('Телефон')               PHONE           [NUMBER];
+	@name('ИНН')                   INN             [NUMBER];
+	@name('Уволен')                FIRED           [BOOLEAN];
+	@name('Дата увольнения')       DISMISSALDATE   [DATE];
+}

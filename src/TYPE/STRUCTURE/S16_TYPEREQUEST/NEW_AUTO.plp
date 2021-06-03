@@ -1,0 +1,27 @@
+class S16_TYPEREQUEST;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Название')
+	P_NAME in [STRING_50]
+) return ref [S16_TYPEREQUEST] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_NAME := this.[NAME];
+	end if;
+	-- End initialization of parameters and variables
+end;
+
+execute is
+begin
+	-- Установка значения реквизита "Название"
+	[NAME] := P_NAME;
+end;
+end;
+end;

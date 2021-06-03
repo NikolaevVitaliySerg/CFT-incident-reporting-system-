@@ -1,0 +1,2 @@
+@name('Ссылка на "s16.Задачи"')
+class S16_TASKS_REF is ref [S16_TASKS];

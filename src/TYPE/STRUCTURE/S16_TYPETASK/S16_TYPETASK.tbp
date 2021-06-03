@@ -1,0 +1,6 @@
+@dictionary
+@entity('TYPE')
+@name('s16.ТипЗадачи')
+class S16_TYPETASK {
+	@name('Название') NAME [STRING_50];
+}

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MethodPresentation classId="S16_STATE" formatVersion="1.2" shortName="EDIT_AUTO">
+    <Properties>
+        <Default>true</Default>
+        <Hotkey>F3</Hotkey>
+        <UserDriven>true</UserDriven>
+    </Properties>
+    <Parameters/>
+    <Variables/>
+    <Controls>
+        <Form>
+            <Properties>
+                <Caption>Изменить</Caption>
+                <Height>72</Height>
+                <ValidateName>Form1</ValidateName>
+                <Width>581</Width>
+            </Properties>
+            <Controls>
+                <Label>
+                    <Properties>
+                        <Caption>Название</Caption>
+                        <Height>24</Height>
+                        <Left>8</Left>
+                        <Qualifier>%PARAM%.P_NAME</Qualifier>
+                        <Tips>Поясняющая надпись (Название)</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Label1</ValidateName>
+                        <Width>120</Width>
+                    </Properties>
+                </Label>
+                <Text>
+                    <Properties>
+                        <ClassId>STRING_50</ClassId>
+                        <Height>24</Height>
+                        <Left>136</Left>
+                        <Qualifier>%PARAM%.P_NAME</Qualifier>
+                        <TabIndex>2</TabIndex>
+                        <Tips>Название</Tips>
+                        <Top>8</Top>
+                        <ValidateName>Text1</ValidateName>
+                        <Width>437</Width>
+                    </Properties>
+                </Text>
+                <Button>
+                    <Properties>
+                        <Caption>OK</Caption>
+                        <Height>24</Height>
+                        <Left>285</Left>
+                        <Qualifier>OK</Qualifier>
+                        <TabIndex>3</TabIndex>
+                        <Tips>Выполнить операцию</Tips>
+                        <Top>40</Top>
+                        <ValidateName>Ok</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+                <Button>
+                    <Properties>
+                        <Caption>Отмена</Caption>
+                        <Height>24</Height>
+                        <Left>433</Left>
+                        <Qualifier>CANCEL</Qualifier>
+                        <TabIndex>4</TabIndex>
+                        <Tips>Отказ от выполнения</Tips>
+                        <Top>40</Top>
+                        <ValidateName>Cancel</ValidateName>
+                        <Width>140</Width>
+                    </Properties>
+                </Button>
+            </Controls>
+        </Form>
+    </Controls>
+</MethodPresentation>

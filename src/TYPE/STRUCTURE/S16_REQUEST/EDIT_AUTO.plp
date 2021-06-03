@@ -1,0 +1,65 @@
+class S16_REQUEST;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Номер проекта')
+	P_NUMBERREQUEST in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Тип заявки')
+	P_TYPEREQUEST_ID in [S16_TYPEREQU_REF],
+	@name('Проект')
+	P_PROJECT_ID in [S16_PROJECT_REF],
+	@name('Плановые трудозатраты')
+	P_PLANNEDLABOUR in [NUMBER],
+	@name('Актуальные трудозатраты')
+	P_ACTUALLABOUR in [NUMBER],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Ответственный')
+	P_RESPONSIBLE_ID in [S16_EMPLOYEE_REF]
+) is
+
+validate is
+	v_this ref [S16_REQUEST];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+	
+	if P_MESSAGE = 'VALIDATE' then 
+		if P_iNFO = 'OK' then
+			if P_NUMBERREQUEST is null then
+				pragma error ('Необходимо ввести номер заявки');
+			end if;
+			
+			if P_NAME is null then
+				pragma error ('Необходимо ввести название заявки');
+			end if;
+			
+			if P_DATECREATION is null then
+				pragma error ('Необходимо ввести дату создания заявки');
+			end if;
+		end if;
+	end if;
+end;
+
+execute is
+	v_this ref [S16_REQUEST];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;

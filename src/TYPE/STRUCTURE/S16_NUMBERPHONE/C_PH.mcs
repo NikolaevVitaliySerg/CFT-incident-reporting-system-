@@ -1,0 +1,20 @@
+Public Function Main(LastControl) 
+   'Функция возвращает логическое значение, которое является результатом работы валидатора 
+      If LastControl Is Nothing Then 
+      ' Действия при загрузке формы 
+      Else 
+      ' Действия при потере фокуса валидируемого контрола LastControl 
+      End If 
+      Main = True ' Результирующее значение валидатора (True или False) 
+End Function 
+
+Private Sub Grid1_RowColChange()  
+	'Функция определяет индекс текущей строки 
+
+	V_IDX = Grid1.IndexByRow(Grid1.Row)  
+	'Возвращает индекс PL/SQL-ной таблицы по индексу указанной строки таблицы. 
+
+	Call Form1.ScriptServerValidate(Grid1, "V_EXEC")  
+	'Переключает на серверную валидацию для событиия V_EXEC 
+
+End Sub

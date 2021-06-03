@@ -1,0 +1,7 @@
+@dictionary
+@entity('TYPE')
+@name('s16.task2')
+class S16_NUMBERPHONE {
+	@name('Номер телефона') PHONENUMBER [STRING];
+--@name('Номер телефона исправленный') PHONENUMBERCH [STRING];
+}

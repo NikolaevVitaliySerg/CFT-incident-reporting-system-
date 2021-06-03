@@ -1,0 +1,96 @@
+class S16_TASKS;
+
+@name('Добавить')
+@tag('CREATED')
+constructor NEW_AUTO is
+
+NEW_AUTO (
+	@name('Номер задачи')
+	P_NUMBER in [NUMBER],
+	@name('Порядок задачи')
+	P_ORDERTASK in [NUMBER],
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Тип задачи')
+	P_TYPETASK_ID in [S16_TYPETASK_REF],
+	@name('Заявка')
+	P_REQUEST_ID in [S16_REQUEST_REF],
+	@name('Дата создания')
+	P_DATECREATION in [DATE],
+	@name('Дата завершения')
+	P_DATECOMPLETEON in [DATE],
+	@name('Исполнитель')
+	P_PERFORMER_ID in [S16_EMPLOYEE_REF]
+) return ref [S16_TASKS] is
+
+validate is
+begin
+	-- Start initialization of parameters and variables
+	if p_message = 'DEFAULT' then
+		P_NUMBER := this.[NUMBER];
+		P_ORDERTASK := this.[ORDERTASK];
+		P_NAME := this.[NAME];
+		P_TYPETASK_ID := this.[TYPETASK_ID];
+		P_REQUEST_ID := this.[REQUEST_ID];
+		P_DATECREATION := this.[DATECREATION];
+		P_DATECOMPLETEON := this.[DATECOMPLETEON];
+		P_PERFORMER_ID := this.[PERFORMER_ID];
+	end if;
+	-- End initialization of parameters and variables
+	if P_MESSAGE = 'VALIDATE' then
+		if P_INFO = 'OK' then
+			if P_NUMBER is null then
+				pragma error ('Необходимо ввести номер задачи');
+			end if;
+			
+			if P_ORDERTASK is null then 
+				pragma error ('Необходимо ввести порядок задачи');
+			end if;
+			
+			if P_NAME is null then 
+				pragma error ('Необходимо ввести название задачи');
+			end if;
+			
+			if P_DATECREATION is null then 
+				pragma error ('Необходимо ввести дату создания задачи');
+			end if;			
+		end if;
+	end if;
+end;
+
+execute is
+begin
+	for (select x(x.[NUMBER] : C_NUMBER)
+	in ::[S16_TASKS] all
+	where P_NUMBER = x.[NUMBER] 
+	and rownum >= 1
+	)
+	loop
+		pragma error ('Номер задачи уже существует, введите другой номер');
+	end loop;
+	-- Установка значения реквизита "Номер задачи"
+	[NUMBER] := P_NUMBER;
+	-- Установка значения реквизита "Порядок задачи"
+	[ORDERTASK] := P_ORDERTASK;
+	-- Установка значения реквизита "Название"
+	[NAME] := P_NAME;
+	-- Установка значения реквизита "Тип задачи"
+	[TYPETASK_ID] := P_TYPETASK_ID;
+	-- Установка значения реквизита "Заявка"
+	[REQUEST_ID] := P_REQUEST_ID;
+	
+	
+	if [REQUEST_ID].[DATECREATION] > P_DATECREATION then
+		pragma error ('Дата задачи не может быть меньше даты заявки');
+	else
+		-- Установка значения реквизита "Дата создания"
+	[DATECREATION] := P_DATECREATION;
+	end if;
+	
+	-- Установка значения реквизита "Дата завершения"
+	[DATECOMPLETEON] := P_DATECOMPLETEON;
+	-- Установка значения реквизита "Исполнитель"
+	[PERFORMER_ID] := P_PERFORMER_ID;
+end;
+end;
+end;

@@ -1,0 +1,7 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Должности')
+class S16_POST {
+	@name('Название должности') NAME   [STRING_50];
+	@name('Оклад')              SALARY [NUM_9_2];
+}

@@ -1,0 +1,14 @@
+@dictionary
+@entity('TYPE')
+@name('s16.Задачи')
+class S16_TASKS {
+	@name('Номер задачи')    NUMBER         [NUMBER];
+	@name('Порядок задачи')  ORDERTASK      [NUMBER];
+	@name('Трудозатраты')    LABORCOSTS_ID  [S16_LABORCOS_REF];
+	@name('Название')        NAME           [STRING_50];
+	@name('Тип задачи')      TYPETASK_ID    [S16_TYPETASK_REF];
+	@name('Заявка')          REQUEST_ID     [S16_REQUEST_REF];
+	@name('Дата создания')   DATECREATION   [DATE];
+	@name('Дата завершения') DATECOMPLETEON [DATE];
+	@name('Исполнитель')     PERFORMER_ID   [S16_EMPLOYEE_REF];
+}

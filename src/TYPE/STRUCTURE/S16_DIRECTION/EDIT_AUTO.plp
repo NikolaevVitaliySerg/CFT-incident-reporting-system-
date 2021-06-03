@@ -1,0 +1,35 @@
+class S16_DIRECTION;
+
+@name('Изменить')
+@tag('CREATED')
+method EDIT_AUTO uses NEW_AUTO is
+
+EDIT_AUTO (
+	@name('Название')
+	P_NAME in [STRING_50],
+	@name('Описание')
+	P_DESCRIPTION in [STRING_128]
+) is
+
+validate is
+	v_this ref [S16_DIRECTION];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		&BASE$VALIDATE(v_this);
+		&BASE$GETVARS;
+	end if;
+end;
+
+execute is
+	v_this ref [S16_DIRECTION];
+begin
+	if this is not null then
+		v_this := this;
+		&BASE$SETVARS;
+		v_this := &BASE$EXECUTE(v_this);
+	end if;
+end;
+end;
+end;
