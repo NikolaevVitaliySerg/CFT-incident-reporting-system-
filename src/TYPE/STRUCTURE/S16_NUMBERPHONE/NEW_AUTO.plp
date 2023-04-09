@@ -7,18 +7,16 @@ constructor NEW_AUTO is
 NEW_AUTO (
 	@name('Номер телефона')
 	P_PHONENUMBER in [STRING]
---	@name('Номер телефона исправленный')
---	P_PHONENUMBERCH in [STRING]
-) return ref [S16_NUMBERPHONE] is
+) 
+return ref [S16_NUMBERPHONE] is
 
 validate is
 
 
 begin
-	-- Start initialization of parameters and variables
+
 	if p_message = 'DEFAULT' then
 		P_PHONENUMBER := this.[PHONENUMBER];
---		P_PHONENUMBERCH := this.[PHONENUMBERCH];
 	end if;
 		
 		
@@ -38,7 +36,6 @@ begin
 				end if;
 		    end if;		
 		end if;
-	-- End initialization of parameters and variables
 	end;
 
 execute is

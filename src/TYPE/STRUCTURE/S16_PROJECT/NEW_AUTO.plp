@@ -17,15 +17,13 @@ NEW_AUTO (
 	P_DATECOMPLETEON in [DATE],
 	@name('Плановые трудозатраты')
 	P_PLANNEDLABOUR in [NUMBER],
-	--@name('Актуальные трудозатраты')
-	--P_ACTUALLABOUR in [NUMBER],
 	@name('Менеджер')
 	P_MANAGER_ID in [S16_EMPLOYEE_REF]
 ) return ref [S16_PROJECT] is
 
 validate is
 begin
-	-- Start initialization of parameters and variables
+
 	if p_message = 'DEFAULT' then
 		P_NUMBERPROJECT := this.[NUMBERPROJECT];
 		P_NAME := this.[NAME];
@@ -33,10 +31,9 @@ begin
 		P_DATECREATION := this.[DATECREATION];
 		P_DATECOMPLETEON := this.[DATECOMPLETEON];
 		P_PLANNEDLABOUR := this.[PLANNEDLABOUR];
-		--P_ACTUALLABOUR := this.[ACTUALLABOUR];
 		P_MANAGER_ID := this.[MANAGER_ID];
 	end if;
-	-- End initialization of parameters and variables
+
 	if P_MESSAGE = 'VALIDATE' then 
 		if P_iNFO = 'OK' then
 			if P_NUMBERPROJECT is null then
@@ -84,8 +81,6 @@ begin
 	[DATECOMPLETEON] := P_DATECOMPLETEON;
 	-- Установка значения реквизита "Плановые трудозатраты"
 	[PLANNEDLABOUR] := P_PLANNEDLABOUR;
-	-- Установка значения реквизита "Актуальные трудозатраты"
---	[ACTUALLABOUR] := P_ACTUALLABOUR;
 	-- Установка значения реквизита "Менеджер"
 	[MANAGER_ID] := P_MANAGER_ID;
 end;

@@ -11,11 +11,11 @@ NEW_AUTO (
 
 validate is
 begin
-	-- Start initialization of parameters and variables
+
 	if p_message = 'DEFAULT' then
 		P_NAME := this.[NAME];
 	end if;
-	-- End initialization of parameters and variables
+
 end;
 
 execute is

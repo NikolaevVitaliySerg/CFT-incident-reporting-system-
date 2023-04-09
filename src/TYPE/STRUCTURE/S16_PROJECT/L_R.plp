@@ -6,12 +6,6 @@ method L_R is
 @name('Клиент скрипт') public V_EXEC [STRING_32000];
 @name('Индекс таблицы')public V_IDX  [NUMBER];
 	
-/* Описания */
-
-/* Блок инициализации */
-
-/* Описания */
-
 L_R	(
 	@name('Проект') P_S16_PROJECT_REF in ref      [S16_PROJECT],
 	@name('Заявка') P_S16_REQUEST     in table of [S16_REQUEST]
@@ -27,30 +21,21 @@ begin
 					,x.[NAME]					 C_NAME
 					,x.[PLANNEDLABOUR]   		 C_PLANNEDLABOUR
 					,x.[RESPONSIBLE_ID]  		 C_RESPONSIBLE
-					
-					
-					
-
-					--,x%statename 				 C_STATE
 		) in ::[S16_REQUEST]
 		where x.[PROJECT_ID]=P_S16_PROJECT_REF
 		)
-		--where x.[PROJECT_ID] = P_S16_PROJECTS_REF)
-		
 		loop
 			P_S16_REQUEST(P_S16_REQUEST.count+1).[NUMBERREQUEST]:=X.C_NUMBERREQUEST;
-			P_S16_REQUEST(P_S16_REQUEST.count).[NAME]			:=X.C_NAME;
+			P_S16_REQUEST(P_S16_REQUEST.count).[NAME]	    :=X.C_NAME;
 			P_S16_REQUEST(P_S16_REQUEST.count).[PLANNEDLABOUR]  :=X.C_PLANNEDLABOUR;
 			P_S16_REQUEST(P_S16_REQUEST.count).[RESPONSIBLE_ID] :=X.C_RESPONSIBLE;
-		--	P_S16_REQUEST(P_S16_REQUEST.count+1)       			:=X.C_STATE;
 		end loop;
 	end if;
 end;
 
-execute is /* Секция "Тело" */
 begin
 	null;
 end;
 
 end; 
-end; /* конeц method L_R */
+end;

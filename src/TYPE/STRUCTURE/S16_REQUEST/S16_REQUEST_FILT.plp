@@ -1,22 +1,13 @@
 class S16_REQUEST;
 @import_plsql(true)
 
-@name('Фильтр для VW_CRIT_S16_REQUEST_FILT_PRO') /* Свойство операции "Наименование" */
+@name('Фильтр для VW_CRIT_S16_REQUEST_FILT_PRO')
 @speciality('filter')
 static method S16_REQUEST_FILT is
-
-/* Секция глобальных переменных *
 @name('пример переменной 1')
 public V_EXAMPLE1 [STRING_100];
 @name('пример переменной 2')
 public V_EXAMPLE2 [NUMBER];
-/* Конец секции глобальных переменных */
-	
-/* Описания */
-
-/* Блок инициализации */
-
-/* Описания */
 
 S16_REQUEST_FILT
 
@@ -28,7 +19,7 @@ S16_REQUEST_FILT
 	 is
 
 validate is
-/* Секция "Проверка" */
+
 begin
 	if P_MESSAGE = 'DEFAULT' then
 		null;
@@ -36,10 +27,10 @@ begin
 end;
 
 execute is
-/* Секция "Тело" */
+
 begin
 	executor.set_context('P_PROJECT_ID', P_PROJECT_ID);
 end;
 
 end; 
-end; /* конeц method S16_REQUEST_FILT */
+end;

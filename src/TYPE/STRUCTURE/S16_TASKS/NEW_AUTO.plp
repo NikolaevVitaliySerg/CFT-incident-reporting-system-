@@ -25,7 +25,7 @@ NEW_AUTO (
 
 validate is
 begin
-	-- Start initialization of parameters and variables
+
 	if p_message = 'DEFAULT' then
 		P_NUMBER := this.[NUMBER];
 		P_ORDERTASK := this.[ORDERTASK];
@@ -36,7 +36,7 @@ begin
 		P_DATECOMPLETEON := this.[DATECOMPLETEON];
 		P_PERFORMER_ID := this.[PERFORMER_ID];
 	end if;
-	-- End initialization of parameters and variables
+
 	if P_MESSAGE = 'VALIDATE' then
 		if P_INFO = 'OK' then
 			if P_NUMBER is null then

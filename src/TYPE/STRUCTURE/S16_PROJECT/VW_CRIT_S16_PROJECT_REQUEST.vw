@@ -19,13 +19,9 @@ view VW_CRIT_S16_PROJECT_REQUEST {
 				all 
 				where 
 				x.[PROJECT_ID] = a) 			: C_ACTUALLABOUR
-			
-        	--	,(select y(sum(y.[ACTUALLABOUR])) in 
-        		--,a.[ACTUALLABOUR]				: C_ACTUALLABOUR
         		,a.[MANAGER_ID].[NAME]			: C_MANAGER)
         in ::[S16_PROJECT]
        		where
-        --a.[DATECREATION] like  '%' || sys_context(user_context, 'P_DATECREATION') || '%';
         a.[DATECREATION] >= nvl(to_date(sys_context(user_context,'P_DATECREATION'), 'dd.mm.yyyy'),
   		a.[DATECREATION]
        );

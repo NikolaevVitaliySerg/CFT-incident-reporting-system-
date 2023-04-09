@@ -34,12 +34,11 @@ begin
 		P_TYPEREQUEST_ID := this.[TYPEREQUEST_ID];
 		P_PROJECT_ID := this.[PROJECT_ID];
 		P_PLANNEDLABOUR := this.[PLANNEDLABOUR];
---		P_ACTUALLABOUR := this.[ACTUALLABOUR];
 		P_DATECREATION := this.[DATECREATION];
 		P_DATECOMPLETEON := this.[DATECOMPLETEON];
 		P_RESPONSIBLE_ID := this.[RESPONSIBLE_ID];
 	end if;
-	-- End initialization of parameters and variables
+
 	if P_MESSAGE = 'VALIDATE' then 
 		if P_iNFO = 'OK' then
 			if P_NUMBERREQUEST is null then
@@ -78,9 +77,7 @@ begin
 	[PROJECT_ID] := P_PROJECT_ID;
 	-- Установка значения реквизита "Плановые трудозатраты"
 	[PLANNEDLABOUR] := P_PLANNEDLABOUR;
-	-- Установка значения реквизита "Актуальные трудозатраты"
---	[ACTUALLABOUR] := P_ACTUALLABOUR;
---	-- Установка значения реквизита "Дата создания"
+	-- Установка значения реквизита "Дата создания"
 	[DATECREATION] := P_DATECREATION;
 	-- Установка значения реквизита "Дата завершения"
 	[DATECOMPLETEON] := P_DATECOMPLETEON;

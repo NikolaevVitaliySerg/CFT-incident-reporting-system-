@@ -28,7 +28,7 @@ NEW_AUTO (
 
 validate is
 begin
-	-- Start initialization of parameters and variables
+
 	if p_message = 'DEFAULT' then
 		P_PERSONNELNUMBER := this.[PERSONNELNUMBER];
 		P_NAME := this.[NAME];
@@ -40,7 +40,7 @@ begin
 		P_FIRED  :=this.[FIRED];
 		P_DISMISSALDATE :=this.[DISMISSALDATE];
 	end if;
-	-- End initialization of parameters and variables
+
 	if P_MESSAGE = 'VALIDATE' then 
 		if P_iNFO = 'OK' then
 			if P_PERSONNELNUMBER is null then
@@ -78,7 +78,6 @@ begin
 	[FIRED] := P_FIRED ;
 	-- Установка значения реквизита "Дата увольнения"
 	[DISMISSALDATE] := P_DISMISSALDATE;
-	
 	
 end;
 end;

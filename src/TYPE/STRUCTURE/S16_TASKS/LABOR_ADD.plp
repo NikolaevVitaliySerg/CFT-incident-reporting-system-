@@ -3,35 +3,25 @@ class S16_TASKS;
 @name('Добавить трудозатраты по задаче') /* Свойство операции "Наименование" */
 method LABOR_ADD is
 
-/* Секция глобальных переменных *
 @name('пример переменной 1')
 public V_EXAMPLE1 [STRING_100];
 @name('пример переменной 2')
 public V_EXAMPLE2 [NUMBER];
-/* Конец секции глобальных переменных */
-	
-/* Описания */
-
-/* Блок инициализации */
-
-/* Описания */
 
 LABOR_ADD
 
 (
-	--@name('Задачи') 				P_TASK  	    in 		[S16_TASKS_REF],
 	@name('Сотрудник') 				P_EMPLOYEE_ID   in 		[S16_EMPLOYEE_REF],
 	@name('Дата выполнения') 		P_DATECREATION  in 		[DATE],
 	@name('Плановые трудозатраты') 	P_LABOUR 		in 		[NUMBER],
 	@name('Тип задачи') 			P_TYPETASK_ID   in 		[S16_TYPETASK_REF]
 ) 
-/* Конец секции параметров операции */
+
 	 is
 
-validate is /* Секция "Проверка" */
+validate is
 begin
 	if P_MESSAGE = 'DEFAULT' then
-		--P_TASK := this.[NAME];
 		P_EMPLOYEE_ID:=this.[PERFORMER_ID];
 		P_DATECREATION:=this.[DATECREATION];
 
@@ -39,7 +29,7 @@ begin
 	end if;
 end;
 
-execute is /* Секция "Тело" */
+execute is
 rLaborcosts ref [S16_LABORCOSTS];
 begin
 	
@@ -53,9 +43,8 @@ begin
 	end if;
 	
 	
-	rLaborcosts:=::[S16_LABORCOSTS].[NEW_AUTO](P_EMPLOYEE_ID,P_DATECREATION, P_LABOUR, P_TYPETASK_ID );
+	rLaborcosts := ::[S16_LABORCOSTS].[NEW_AUTO](P_EMPLOYEE_ID,P_DATECREATION, P_LABOUR, P_TYPETASK_ID );
 	this.[LABORCOSTS_ID]:=rLaborcosts;
 end;
-
 end; 
-end; /* конeц method LABOR_ADD */
+end;
