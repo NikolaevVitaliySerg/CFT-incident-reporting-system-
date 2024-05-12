@@ -1,6 +1,6 @@
 class S16_PROJECT;
 
-@name('Посмотреть заявки') /* Свойство операции "Наименование" */
+@name('Посмотреть заявки')
 method L_R is
 
 @name('Клиент скрипт') public V_EXEC [STRING_32000];
@@ -11,19 +11,18 @@ L_R	(
 	@name('Заявка') P_S16_REQUEST     in table of [S16_REQUEST]
 ) is
 
-validate is /* Секция "Проверка" */
+validate is
 
 begin
 	if P_MESSAGE = 'DEFAULT' then
 		P_S16_PROJECT_REF := this;
 		--Заполнение таблицы при загрузке формы
-		for (select x(x.[NUMBERREQUEST] 		 C_NUMBERREQUEST
-					,x.[NAME]					 C_NAME
-					,x.[PLANNEDLABOUR]   		 C_PLANNEDLABOUR
-					,x.[RESPONSIBLE_ID]  		 C_RESPONSIBLE
-		) in ::[S16_REQUEST]
-		where x.[PROJECT_ID]=P_S16_PROJECT_REF
-		)
+		for (select x(x.[NUMBERREQUEST] C_NUMBERREQUEST
+					,x.[NAME] C_NAME
+					,x.[PLANNEDLABOUR] C_PLANNEDLABOUR
+					,x.[RESPONSIBLE_ID] C_RESPONSIBLE) 
+		in ::[S16_REQUEST]
+		where x.[PROJECT_ID]=P_S16_PROJECT_REF)
 		loop
 			P_S16_REQUEST(P_S16_REQUEST.count+1).[NUMBERREQUEST]:=X.C_NUMBERREQUEST;
 			P_S16_REQUEST(P_S16_REQUEST.count).[NAME]	    :=X.C_NAME;
@@ -32,10 +31,5 @@ begin
 		end loop;
 	end if;
 end;
-
-begin
-	null;
-end;
-
 end; 
 end;
