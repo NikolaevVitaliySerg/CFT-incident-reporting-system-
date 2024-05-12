@@ -83,11 +83,10 @@ begin
 	if [REQUEST_ID].[DATECREATION] > P_DATECREATION then
 		pragma error ('Дата задачи не может быть меньше даты заявки');
 	else
-	
 	-- Установка значения реквизита "Дата создания"
 	[DATECREATION] := P_DATECREATION;
 	end if;
-	
+
 	-- Установка значения реквизита "Дата завершения"
 	[DATECOMPLETEON] := P_DATECOMPLETEON;
 	
