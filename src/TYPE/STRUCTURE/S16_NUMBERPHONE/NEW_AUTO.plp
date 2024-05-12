@@ -12,14 +12,10 @@ return ref [S16_NUMBERPHONE] is
 
 validate is
 
-
 begin
-
 	if p_message = 'DEFAULT' then
 		P_PHONENUMBER := this.[PHONENUMBER];
 	end if;
-		
-		
 		if P_MESSAGE= 'VALIDATE' then 
 		 	if p_info = 'OK' then
 		 		if substr(P_PHONENUMBER,1,3)='650' then
@@ -32,7 +28,6 @@ begin
 		 		
 				if  instr(P_PHONENUMBER,'.', 4)=1 or instr(P_PHONENUMBER, '.', 8)=1 then
 					P_PHONENUMBER:=REPLACE (P_PHONENUMBER, '.', '-');	
-			
 				end if;
 		    end if;		
 		end if;
