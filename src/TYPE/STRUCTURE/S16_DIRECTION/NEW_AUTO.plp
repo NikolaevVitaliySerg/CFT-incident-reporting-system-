@@ -9,7 +9,8 @@ NEW_AUTO (
 	P_NAME in [STRING_50],
 	@name('Описание')
 	P_DESCRIPTION in [STRING_128]
-) return ref [S16_DIRECTION] is
+) 
+return ref [S16_DIRECTION] is
 
 validate is
 begin
