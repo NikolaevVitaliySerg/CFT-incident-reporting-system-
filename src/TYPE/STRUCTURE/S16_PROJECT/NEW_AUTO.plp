@@ -19,7 +19,8 @@ NEW_AUTO (
 	P_PLANNEDLABOUR in [NUMBER],
 	@name('Менеджер')
 	P_MANAGER_ID in [S16_EMPLOYEE_REF]
-) return ref [S16_PROJECT] is
+) 
+return ref [S16_PROJECT] is
 
 validate is
 begin
