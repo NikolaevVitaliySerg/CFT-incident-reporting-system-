@@ -28,8 +28,6 @@ begin
 	
 	if p_message = 'VALIDATE' then
 		if p_info = 'OK' then
-		
-			
 			if P_LABOUR is null then
 				pragma error ('Необходимо ввести трудозатраты');
 			end if;
@@ -37,10 +35,8 @@ begin
 			if P_DATECREATION is null then
 				pragma error ('Необходимо ввести дату');
 			end if;
-			
 		end if;
 	end if;
-
 end;
 
 execute is
@@ -48,8 +44,7 @@ begin
 	-- Установка значения реквизита "Сотрудник"
 	[EMPLOYEE_ID] := P_EMPLOYEE_ID;
 	
-	if P_DATECREATION >= TASK_ID.[DATECREATION] 
-	AND P_DATECREATION <=TASK_ID.[DATECOMPLETEON] then
+	if P_DATECREATION >= TASK_ID.[DATECREATION] and P_DATECREATION <=TASK_ID.[DATECOMPLETEON] then
 		[DATECREATION] := P_DATECREATION;
 	else
 		pragma error ('Дата создания трудозатрат введена не корректно');
