@@ -10,7 +10,6 @@ view VW_CRIT_S16_PROJECT {
         		,a.[DATECOMPLETEON]				: C_DATECOMPLETEON
         		,a.[PLANNEDLABOUR]				: C_PLANNEDLABOUR
         		,a.[ACTUALLABOUR]				: C_ACTUALLABOUR
-        		,a.[MANAGER_ID].[NAME]			: C_MANAGER
-        )
+        		,a.[MANAGER_ID].[NAME]			: C_MANAGER)
         in ::[S16_PROJECT];
 }

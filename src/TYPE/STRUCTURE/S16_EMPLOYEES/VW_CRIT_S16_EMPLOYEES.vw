@@ -10,7 +10,6 @@ view VW_CRIT_S16_EMPLOYEES {
         		,a.[EDUCATION]		   : C_EDUCATION
         		,a.[EMPLOYMENTDATE]	   : C_EMPLOYMENT
         		,a.[PHONE]			   : C_PHONE
-        		,a.[INN]			   : C_INN
-        )
+        		,a.[INN]			   : C_INN)
         in ::[S16_EMPLOYEES];
 }

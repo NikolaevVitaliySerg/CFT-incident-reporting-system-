@@ -1,7 +1,7 @@
 class S16_TASKS;
 
 
-@name('Удаление(без трудозатрат)') /* Свойство операции "Наименование" */
+@name('Удаление(без трудозатрат)')
 destructor DELETE_AUTO_L is
 
 /* Секция глобальных переменных *
@@ -9,40 +9,21 @@ destructor DELETE_AUTO_L is
 public V_EXAMPLE1 [STRING_100];
 @name('пример переменной 2')
 public V_EXAMPLE2 [NUMBER];
-/* Конец секции глобальных переменных */
-	
-/* Описания */
-
-/* Блок инициализации */
-
-/* Описания */
 
 DELETE_AUTO_L
-/* Секция параметров операции *
 (
 	@name('пример параметра 1')
 	P_EXAMPLE1 in [STRING_100],
 	@name('пример параметра 2')
 	P_EXAMPLE2 in [NUMBER]
 ) 
-/* Конец секции параметров операции */
-	 is
+is
 
-validate is /* Секция "Проверка" */
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
-
-execute is /* Секция "Тело" */
+execute is
 begin
 	if [LABORCOSTS_ID].[LABOUR] is not null then
 		pragma error ('Удалить невозможно, заполнены трудозатраты');
 	end if;	
-
-	
 end;
-
 end; 
-end; /* конeц method DELETE_AUTO_L */
+end;

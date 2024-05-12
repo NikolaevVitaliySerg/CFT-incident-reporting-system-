@@ -12,9 +12,6 @@ view VW_CRIT_S16_TASKS {
         	,a.[DATECOMPLETEON]				: C_DATECOMPLETEON
         	,a.[PERFORMER_ID].[NAME]		: C_PERFORMER
         	,a%statename					: C_STATE
-        	,a.[LABORCOSTS_ID].[LABOUR]		: C_LABOUR
-        
-        	
-        )
+        	,a.[LABORCOSTS_ID].[LABOUR]		: C_LABOUR)
         in ::[S16_TASKS];
 }

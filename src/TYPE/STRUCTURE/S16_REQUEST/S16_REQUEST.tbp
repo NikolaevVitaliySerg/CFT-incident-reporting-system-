@@ -7,7 +7,6 @@ class S16_REQUEST {
 	@name('Тип заявки')            TYPEREQUEST_ID [S16_TYPEREQU_REF];
 	@name('Проект')                PROJECT_ID     [S16_PROJECT_REF];
 	@name('Плановые трудозатраты') PLANNEDLABOUR  [NUMBER];
-	--@name('Актуальные трудозатраты') ACTUALLABOUR   [NUMBER];
 	@name('Дата создания')         DATECREATION   [DATE];
 	@name('Дата завершения')       DATECOMPLETEON [DATE];
 	@name('Ответственный')         RESPONSIBLE_ID [S16_EMPLOYEE_REF];

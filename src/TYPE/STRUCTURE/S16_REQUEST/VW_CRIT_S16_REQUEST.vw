@@ -11,8 +11,7 @@ view VW_CRIT_S16_REQUEST {
         	,a.[DATECREATION]				: C_DATECREATION
         	,a.[DATECOMPLETEON]				: C_DATECOMPLETEON
         	,a.[RESPONSIBLE_ID].[NAME]		: C_RESPONSIBLE
-        	,a%statename					: C_STATE
-        )
+        	,a%statename					: C_STATE)
         in ::[S16_REQUEST];
 }
 

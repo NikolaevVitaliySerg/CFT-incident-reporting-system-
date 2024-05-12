@@ -5,17 +5,10 @@ method PROC_END is
 MIN_NUM [string];
 PROC_END
 
-	 is
-
-validate is
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
+is
 
 execute is
-state_name  in this;
+state_name in this;
 begin
 
 	begin
@@ -25,16 +18,14 @@ begin
 			and (state_name%statename = 'Новая'
 			or state_name%statename = 'В работе');
 			
-	exception
-	when NO_DATA_FOUND then
-		NULL;
+	exception when NO_DATA_FOUND then
+		null;
 	end;
 		if state_name%STATENAME = 'Новая' or state_name%STATENAME = 'В работе'  then
 			pragma error('Задача не может быть завершена т.к. не завершены задачи выше приоритетом');
 		else
-		this.[DATECOMPLETEON]:=sysdate;
+			this.[DATECOMPLETEON]:=sysdate;
 		end if;		
-		
 end;
 end; 
 end;

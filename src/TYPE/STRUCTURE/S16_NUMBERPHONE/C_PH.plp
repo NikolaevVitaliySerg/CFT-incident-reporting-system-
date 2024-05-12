@@ -1,6 +1,6 @@
 class S16_NUMBERPHONE;
 
-@name('CHANGEPHONE') /* Свойство операции "Наименование" */
+@name('CHANGEPHONE')
 method C_PH is
 
 @name('Клиент скрипт')  
@@ -14,16 +14,7 @@ C_PH
 	@name('Номер телефона')
 	 P_S16_NUMBERPHONE in table of [S16_NUMBERPHONE]
 ) 
-
-	 is
-
-validate is
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
-
+is
 execute is
 begin
 	null;

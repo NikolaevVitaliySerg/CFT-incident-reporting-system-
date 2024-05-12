@@ -11,11 +11,9 @@ NEW_AUTO (
 
 validate is
 begin
-
 	if p_message = 'DEFAULT' then
 		P_NAME := this.[NAME];
 	end if;
-
 end;
 
 execute is

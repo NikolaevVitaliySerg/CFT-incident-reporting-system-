@@ -15,7 +15,7 @@ validate is /* Секция "Проверка" */
 
 begin
 	if P_MESSAGE = 'DEFAULT' then
-		P_S16_PROJECT_REF:=this;
+		P_S16_PROJECT_REF := this;
 		--Заполнение таблицы при загрузке формы
 		for (select x(x.[NUMBERREQUEST] 		 C_NUMBERREQUEST
 					,x.[NAME]					 C_NAME

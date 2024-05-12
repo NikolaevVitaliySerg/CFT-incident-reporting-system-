@@ -23,6 +23,5 @@ view VW_CRIT_S16_PROJECT_REQUEST {
         in ::[S16_PROJECT]
        		where
         a.[DATECREATION] >= nvl(to_date(sys_context(user_context,'P_DATECREATION'), 'dd.mm.yyyy'),
-  		a.[DATECREATION]
-       );
+  		a.[DATECREATION]);
 }

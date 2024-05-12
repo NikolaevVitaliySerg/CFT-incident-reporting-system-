@@ -4,35 +4,24 @@ class S16_REQUEST;
 method PROG_END is
 
 PROG_END
-
-	 is
-
-validate is
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
-
+is
 execute is
---idx integer;
  state_name ref [S16_TASKS];
 begin
 
-	 begin
+	begin
 		locate  state_name in ::[S16_TASKS] all
 			where (state_name%STATENAME = 'Новая' or state_name%STATENAME = 'В работе')
 			and state_name.[REQUEST_ID].[NAME] = this.[NAME];
-	  exception
-	  when NO_DATA_FOUND then
-	  	NULL;
-	  end;	
+	exception when NO_DATA_FOUND then
+	  	null;
+	end;
+	  
 	if state_name%STATENAME != 'Завершена' then
 		pragma error('Заявка не может быть завершена  т.к есть не выполненные задачи');
 	else 
-		this.[DATECOMPLETEON]:=sysdate;
+		this.[DATECOMPLETEON] := sysdate;
 	end if;
-
 end;
 end; 
 end;

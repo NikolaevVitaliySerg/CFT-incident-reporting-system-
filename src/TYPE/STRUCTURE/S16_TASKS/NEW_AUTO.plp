@@ -63,11 +63,11 @@ begin
 	for (select x(x.[NUMBER] : C_NUMBER)
 	in ::[S16_TASKS] all
 	where P_NUMBER = x.[NUMBER] 
-	and rownum >= 1
-	)
+	and rownum >= 1)
 	loop
 		pragma error ('Номер задачи уже существует, введите другой номер');
 	end loop;
+	
 	-- Установка значения реквизита "Номер задачи"
 	[NUMBER] := P_NUMBER;
 	-- Установка значения реквизита "Порядок задачи"
@@ -83,12 +83,14 @@ begin
 	if [REQUEST_ID].[DATECREATION] > P_DATECREATION then
 		pragma error ('Дата задачи не может быть меньше даты заявки');
 	else
-		-- Установка значения реквизита "Дата создания"
+	
+	-- Установка значения реквизита "Дата создания"
 	[DATECREATION] := P_DATECREATION;
 	end if;
 	
 	-- Установка значения реквизита "Дата завершения"
 	[DATECOMPLETEON] := P_DATECOMPLETEON;
+	
 	-- Установка значения реквизита "Исполнитель"
 	[PERFORMER_ID] := P_PERFORMER_ID;
 end;

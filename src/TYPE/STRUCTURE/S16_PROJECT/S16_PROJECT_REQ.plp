@@ -17,12 +17,6 @@ S16_PROJECT_REQ (
 
 validate is
 
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
-
 execute is
 begin
 	executor.set_context('P_DATECREATION', to_char(P_DATECREATION, 'dd.mm.yyyy'));

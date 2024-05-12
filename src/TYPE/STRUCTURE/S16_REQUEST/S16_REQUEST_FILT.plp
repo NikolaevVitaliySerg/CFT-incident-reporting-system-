@@ -11,20 +11,9 @@ public V_EXAMPLE2 [NUMBER];
 
 S16_REQUEST_FILT
 
-(
-	@name('Проект')
-	P_PROJECT_ID in [NUMBER]
-) 
-
-	 is
-
-validate is
-
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
+( @name('Проект')
+  P_PROJECT_ID in [NUMBER]) 
+is
 
 execute is
 

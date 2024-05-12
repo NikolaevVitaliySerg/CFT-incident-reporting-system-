@@ -15,8 +15,6 @@ NEW_AUTO (
 	P_PROJECT_ID in [S16_PROJECT_REF],
 	@name('Плановые трудозатраты')
 	P_PLANNEDLABOUR in [NUMBER],
---	@name('Актуальные трудозатраты')
---	P_ACTUALLABOUR in [NUMBER],
 	@name('Дата создания')
 	P_DATECREATION in [DATE],
 	@name('Дата завершения')
@@ -27,7 +25,6 @@ NEW_AUTO (
 
 validate is
 begin
-	-- Start initialization of parameters and variables
 	if p_message = 'DEFAULT' then
 		P_NUMBERREQUEST := this.[NUMBERREQUEST];
 		P_NAME := this.[NAME];
@@ -62,8 +59,7 @@ begin
 	for (select x(x.[NUMBERREQUEST] : C_NUMBERREQUEST)
 	in ::[S16_REQUEST] all
 	where P_NUMBERREQUEST = x.[NUMBERREQUEST] 
-	and rownum >= 1
-	)
+	and rownum >= 1)
 	loop
 		pragma error ('Номер заявки уже существует, введите другой номер');
 	end loop;

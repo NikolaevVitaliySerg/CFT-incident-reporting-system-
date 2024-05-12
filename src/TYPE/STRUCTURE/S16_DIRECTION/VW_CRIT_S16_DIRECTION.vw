@@ -4,7 +4,6 @@ class S16_DIRECTION;
 view VW_CRIT_S16_DIRECTION {
     type main is
         select a(a.[NAME]
-        		,a.[DESCRIPTION]
-        )
+        		,a.[DESCRIPTION])
         in ::[S16_DIRECTION];
 }

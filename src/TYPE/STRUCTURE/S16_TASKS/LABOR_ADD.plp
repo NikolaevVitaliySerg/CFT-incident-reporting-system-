@@ -1,6 +1,6 @@
 class S16_TASKS;
 
-@name('Добавить трудозатраты по задаче') /* Свойство операции "Наименование" */
+@name('Добавить трудозатраты по задаче')
 method LABOR_ADD is
 
 @name('пример переменной 1')
@@ -16,16 +16,13 @@ LABOR_ADD
 	@name('Плановые трудозатраты') 	P_LABOUR 		in 		[NUMBER],
 	@name('Тип задачи') 			P_TYPETASK_ID   in 		[S16_TYPETASK_REF]
 ) 
-
-	 is
-
+is
 validate is
 begin
 	if P_MESSAGE = 'DEFAULT' then
-		P_EMPLOYEE_ID:=this.[PERFORMER_ID];
-		P_DATECREATION:=this.[DATECREATION];
-
-		P_TYPETASK_ID:=this.[TYPETASK_ID];
+		P_EMPLOYEE_ID := this.[PERFORMER_ID];
+		P_DATECREATION := this.[DATECREATION];
+		P_TYPETASK_ID := this.[TYPETASK_ID];
 	end if;
 end;
 

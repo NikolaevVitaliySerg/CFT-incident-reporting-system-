@@ -13,6 +13,6 @@ view VW_CRIT_S16_REQUEST_FILT_PRO {
         	,a.[RESPONSIBLE_ID].[NAME]		: C_RESPONSIBLE
         	,a%statename					: C_STATE)
         in ::[S16_REQUEST]
-          where sys_context(user_context, 'P_PROJECT_ID')= a.[PROJECT_ID].[NUMBERPROJECT] 
-       or sys_context(user_context, 'P_PROJECT_ID') is null;
+        where sys_context(user_context, 'P_PROJECT_ID')= a.[PROJECT_ID].[NUMBERPROJECT] 
+        or sys_context(user_context, 'P_PROJECT_ID') is null;
 }

@@ -4,16 +4,7 @@ class S16_TASKS;
 method NEW_PROC is
 
 NEW_PROC
-
-
-	 is
-
-validate is
-begin
-	if P_MESSAGE = 'DEFAULT' then
-		null;
-	end if;
-end;
+is
 
 execute is
 begin
@@ -23,7 +14,7 @@ begin
     refRequest := this.[REQUEST_ID];
 
     if refRequest%statename <> 'В работе' then
-    pragma error ('Задачу нельзя перевести в состояние "в работе" т.к. заявка по этой задаче еще не "в работе"') ;
+		pragma error ('Задачу нельзя перевести в состояние "в работе" т.к. заявка по этой задаче еще не "в работе"') ;
     end if;
 end;
 end;
