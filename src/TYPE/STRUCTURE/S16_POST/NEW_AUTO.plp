@@ -9,7 +9,8 @@ NEW_AUTO (
 	P_NAME in [STRING_50],
 	@name('Оклад')
 	P_SALARY in [NUM_9_2]
-) return ref [S16_POST] is
+) 
+return ref [S16_POST] is
 
 validate is
 begin
