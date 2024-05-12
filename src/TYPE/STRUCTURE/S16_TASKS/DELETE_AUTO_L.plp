@@ -4,7 +4,6 @@ class S16_TASKS;
 @name('Удаление(без трудозатрат)')
 destructor DELETE_AUTO_L is
 
-/* Секция глобальных переменных *
 @name('пример переменной 1')
 public V_EXAMPLE1 [STRING_100];
 @name('пример переменной 2')
