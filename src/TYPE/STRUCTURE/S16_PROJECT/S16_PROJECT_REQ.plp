@@ -13,7 +13,8 @@ public V_EXAMPLE2 [NUMBER];
 S16_PROJECT_REQ (
 	@name('Дата создания')
 	P_DATECREATION  in [DATE]
-) is
+) 
+is
 
 validate is
 
